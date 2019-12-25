@@ -1,6 +1,3 @@
-# Introduction
-Recognise 20 Most Talented Kpop Female Idols
-
 ## Tutorials
 
 ### 0. Setup GCP
