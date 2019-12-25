@@ -52,7 +52,7 @@ def main():
     else:
         url = st.text_input("Please input an url:")
 
-        if url =! "":
+        if url != "":
             # Read image from the url
             response = requests.get(url)
             import_img = PIL.Image.open(BytesIO(response.content))
