@@ -1,4 +1,4 @@
 streamlit==0.49.0
 matplotlib==3.1.1
-https://download.pytorch.org/whl/cpu/torch-1.0.1.post2-cp36-cp36m-linux_x86_64.whl
+https://download.pytorch.org/whl/cpu/torch-1.3.1-cp36-none-macosx_10_7_x86_64.whl
 fastai
