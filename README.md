@@ -4,6 +4,7 @@ Recognise 20 Most Talented Kpop Female Idols
 # Resources
 
 ## The List of Most Talented Kpop Female Idols (Source: [Spinditty](https://spinditty.com/genres/The-10-Most-Beautiful-KPOP-Female-Idols))
+
 1. Suzy (Miss A)
 2. Dara (2NE1)
 3. Jiyeon (T-ara)
@@ -25,10 +26,14 @@ Recognise 20 Most Talented Kpop Female Idols
 19. Nana (After School)
 20. Irene (Red Velvet)
 
-## Tutorial
-1. Create datasets and train models: 
+## Tutorials
+
+### 1. Create datasets and train models: 
+
 - Fast.ai lesson 1: [https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson1-pets.ipynb](https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson1-pets.ipynb)
+
 - Fast.ai lesson 2: [https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson2-download.ipynb](https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson2-download.ipynb)
 
-2. Productize the model
+### 2. Productize the model
+
 - Deploying on Render: [https://course.fast.ai/deployment_render.html](https://course.fast.ai/deployment_render.html)
