@@ -13,6 +13,10 @@ st.title("Son Tung MTP vs G-Dragon")
 
 def predict(img, display_img):
 
+    # Temporarily displays a message while executing 
+    with st.spinner('Wait for it...'):
+        time.sleep(1)
+
     # Load model and make prediction
     model = load_learner('model/data/train/')
     pred_class = model.predict(img)[0]
@@ -38,10 +42,6 @@ if option == 'Choose a test image':
     test_image = st.selectbox(
         'Please select a test image:', test_images)
 
-    # Temporarily displays a message while executing 
-    with st.spinner('Wait for it...'):
-        time.sleep(1)
-
     # Read the image
     file_path = 'model/data/test/' + test_image
     img = open_image(file_path)
@@ -53,7 +53,7 @@ if option == 'Choose a test image':
 
 else:
     url = st.text_input("Please input a url:")
-    
+
     if url != "":
         try:
             # Read image from the url
