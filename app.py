@@ -1,78 +1,73 @@
-from fastai.vision import open_image, load_learner, image
+from fastai.vision import open_image, load_learner, image, torch
 import streamlit as st
 import numpy as np
 import matplotlib.image as mpimg
-from matplotlib.pyplot import imshow
 import os
 import time
-
 import PIL.Image
 import requests
 from io import BytesIO
 
-def main():
-    # App title
-    st.title("Son Tung MTP vs G-Dragon")
+# App title
+st.title("Son Tung MTP vs G-Dragon")
 
-    # Image source selection
-    option = st.radio('', ['Choose a test image', 'Choose your own image'])
+def predict(img, display_img):
 
-    if option == 'Choose a test image':
+    # Load model and make prediction
+    model = load_learner('model/data/train/')
+    pred_class = model.predict(img)[0]
+    pred_prob = round(torch.max(model.predict(img)[2]).item()*100)
 
-        # Test image selection
-        test_images = os.listdir('data/test/')
-        test_image = st.selectbox(
-            'Please select a test image:', test_images)
-
-        # Temporarily displays a message while executing 
-        with st.spinner('Wait for it...'):
-            time.sleep(1.2)
-
-        # Read the image
-        file_path = 'data/test/' + test_image
-        img = open_image(file_path)
-
-        # Load model and predict
-        model = load_learner('data/train/')
-        pred_class = model.predict(img)[0]
-
-        # Display the prediction
-        if str(pred_class) == 'mtp':
-            st.success("This is Son Tung MTP from Vietnam!")
-        else:
-            st.success("This is G-Dragon from Korea.")
-
-        # Display the image
-        display_img = mpimg.imread(file_path)
-        st.image(display_img, use_column_width=True)
-
+    # Display the prediction
+    if str(pred_class) == 'mtp':
+        st.success("This is Son Tung MTP with the probability of " + str(pred_prob) + '%')
     else:
-        url = st.text_input("Please input an url:")
+        st.success("This is G-Dragon with the probability of " + str(pred_prob) + '%')
+    
+    # Display the test image
+    st.image(display_img, use_column_width=True)
 
-        if url != "":
-            try:
-                # Read image from the url
-                response = requests.get(url)
-                import_img = PIL.Image.open(BytesIO(response.content))
 
-                # Transform the image to feed into the model
-                img = import_img.convert('RGB')
-                img = image.pil2tensor(img, np.float32).div_(255)
-                img = image.Image(img)
+# Image source selection
+option = st.radio('', ['Choose a test image', 'Choose your own image'])
 
-                # Load model and make
-                model = load_learner('data/train/')
-                pred_class = model.predict(img)[0]
+if option == 'Choose a test image':
 
-                # Display the prediction
-                if str(pred_class) == 'mtp':
-                    st.success("This is Son Tung MTP from Vietnam!")
-                else:
-                    st.success("This is G-Dragon from Korea.")
+    # Test image selection
+    test_images = os.listdir('model/data/test/')
+    test_image = st.selectbox(
+        'Please select a test image:', test_images)
 
-                st.image(np.asarray(import_img), use_column_width=True)
-            except:
-                st.text("Invalid url!")
+    # Temporarily displays a message while executing 
+    with st.spinner('Wait for it...'):
+        time.sleep(1)
 
-if __name__ == "__main__":
-    main()
+    # Read the image
+    file_path = 'model/data/test/' + test_image
+    img = open_image(file_path)
+    # Get the image to display
+    display_img = mpimg.imread(file_path)
+
+    # Predict and display the image
+    predict(img, display_img)
+
+else:
+    url = st.text_input("Please input a url:")
+    
+    if url != "":
+        try:
+            # Read image from the url
+            response = requests.get(url)
+            pil_img = PIL.Image.open(BytesIO(response.content))
+            display_img = np.asarray(pil_img) # Image to display
+
+            # Transform the image to feed into the model
+            img = pil_img.convert('RGB')
+            img = image.pil2tensor(img, np.float32).div_(255)
+            img = image.Image(img)
+
+            # Predict and display the image
+            predict(img, display_img)
+
+        except:
+            st.text("Invalid url!")
