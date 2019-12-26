@@ -13,25 +13,24 @@ st.title("Son Tung MTP vs G-Dragon")
 
 def predict(img, display_img):
 
+    # Display the test image
+    st.image(display_img, use_column_width=True)
+
     # Temporarily displays a message while executing 
     with st.spinner('Wait for it...'):
-        time.sleep(1)
+        time.sleep(3)
 
     # Load model and make prediction
     model = load_learner('model/data/train/')
     pred_class = model.predict(img)[0]
     pred_prob = round(torch.max(model.predict(img)[2]).item()*100)
-
+    
     # Display the prediction
     if str(pred_class) == 'mtp':
-        st.success("This is Son Tung MTP with the probability of " + str(pred_prob) + '%')
+        st.success("This is Son Tung MTP with the probability of " + str(pred_prob) + '%.')
     else:
-        st.success("This is G-Dragon with the probability of " + str(pred_prob) + '%')
+        st.success("This is G-Dragon with the probability of " + str(pred_prob) + '%.')
     
-    # Display the test image
-    st.image(display_img, use_column_width=True)
-
-
 # Image source selection
 option = st.radio('', ['Choose a test image', 'Choose your own image'])
 
