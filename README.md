@@ -1,6 +1,8 @@
-## Web App
+## Results
 
-- Available at https://mtp-vs-gd.herokuapp.com/
+- Web app: https://mtp-vs-gd.herokuapp.com/
+- Blog post: https://datasciblog.github.io/2019/12/26/building-app/
+
 
 ## Tutorials
 
