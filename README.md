@@ -1,6 +1,6 @@
 ## Web App
 
-https://mtp-vs-gd.herokuapp.com/
+- Available at https://mtp-vs-gd.herokuapp.com/
 
 ## Tutorials
 
