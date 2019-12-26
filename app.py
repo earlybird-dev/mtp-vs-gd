@@ -9,7 +9,7 @@ import requests
 from io import BytesIO
 
 # App title
-st.title("Son Tung MTP vs G-Dragon")
+st.title("Son Tung M-TP vs G-Dragon")
 
 def predict(img, display_img):
 
@@ -27,7 +27,7 @@ def predict(img, display_img):
     
     # Display the prediction
     if str(pred_class) == 'mtp':
-        st.success("This is Son Tung MTP with the probability of " + str(pred_prob) + '%.')
+        st.success("This is Son Tung M-TP with the probability of " + str(pred_prob) + '%.')
     else:
         st.success("This is G-Dragon with the probability of " + str(pred_prob) + '%.')
     
