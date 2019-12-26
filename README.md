@@ -9,6 +9,6 @@
 
 ### 1. Create datasets and train models: 
 
-- Fast.ai lesson 1: [https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson1-pets.ipynb](https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson1-pets.ipynb)
+- Fast.ai lesson 1: [How to train a pet classifier with resnet34 architecture](https://course.fast.ai/videos/?lesson=1)
 
-- Fast.ai lesson 2: [https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson2-download.ipynb](https://github.com/fastai/course-v3/blob/master/nbs/dl1/lesson2-download.ipynb)
+- Fast.ai lesson 2: [How to create your own image dataset and build a classifier](https://course.fast.ai/videos/?lesson=2)
